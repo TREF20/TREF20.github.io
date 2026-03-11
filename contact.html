@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты • Куда переехать из России в 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); }
+  /* ... твои старые стили остаются ... */
+
+  /* Светлая тема */
+  .light {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card-bg: #ffffff;
+    --card-border: rgba(0,0,0,0.08);
+    --input-bg: #f1f5f9;
+    --input-border: rgba(0,0,0,0.12);
+    --muted: #475569;
+  }
+
+  .light body {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  .light nav {
+    background: rgba(255,255,255,0.75);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .light .glass {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+  }
+
+  .light .bg-zinc-950,
+  .light .bg-zinc-900,
+  .light .bg-zinc-800 {
+    background-color: #f8fafc !important;
+  }
+
+  .light .text-white { color: var(--text) !important; }
+  .light .text-zinc-300,
+  .light .text-zinc-400 { color: var(--muted) !important; }
+
+  .light input,
+  .light textarea,
+  .light select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text);
+  }
+
+  .light input::placeholder { color: #94a3b8; }
+
+  /* Акценты остаются индиго/фиолетовые */
+  .light .text-indigo-400 { color: #6366f1 !important; }
+  .light .bg-indigo-600 { background-color: #4f46e5 !important; }
+  .light .hover\:bg-indigo-700:hover { background-color: #4338ca !important; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white min-h-screen">
+
+  <!-- Навбар -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-plane-departure text-3xl text-indigo-500"></i>
+        <h1 class="text-2xl font-bold">Relo2026</h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-indigo-400 transition">Главная</a>
+        <a href="destinations.html" class="hover:text-indigo-400 transition">Направления</a>
+        <a href="blog.html" class="hover:text-indigo-400 transition">Блог</a>
+        <a href="about.html" class="hover:text-indigo-400 transition">О проекте</a>
+                <a href="compare.html">Сравнение</a>
+        <a href="contact.html" class="text-indigo-400">Контакты</a>
+
+      </div>
+<button data-theme-toggle onclick="toggleTheme()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition dark:bg-zinc-800 dark:hover:bg-zinc-700">
+  <i class="fa-solid fa-moon"></i>
+</button>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Заголовок -->
+  <section class="pt-32 pb-16 bg-gradient-to-b from-zinc-950 to-zinc-900">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Связаться с нами</h1>
+      <p class="text-xl text-zinc-400 max-w-3xl mx-auto">
+        Есть конкретный вопрос по стране, визе или переезду? Напишите — ответим максимально честно и быстро
+      </p>
+    </div>
+  </section>
+
+  <!-- Основной блок контактов -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+      
+      <!-- Форма -->
+      <div class="glass rounded-3xl p-8 border border-white/10">
+        <h2 class="text-3xl font-bold mb-8">Напишите нам</h2>
+        <form id="contact-form" class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium mb-2">Ваше имя</label>
+            <input type="text" id="name" required class="w-full px-6 py-4 bg-zinc-800 border border-white/20 rounded-2xl focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium mb-2">Email или Telegram</label>
+            <input type="text" id="email" required placeholder="например @username или email" class="w-full px-6 py-4 bg-zinc-800 border border-white/20 rounded-2xl focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium mb-2">Ваш вопрос / ситуация</label>
+            <textarea id="message" rows="6" required class="w-full px-6 py-4 bg-zinc-800 border border-white/20 rounded-2xl focus:outline-none focus:border-indigo-500"></textarea>
+          </div>
+          <button type="submit" class="w-full px-10 py-5 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-semibold text-lg transition flex items-center justify-center gap-3">
+            <i class="fa-solid fa-paper-plane"></i>
+            Отправить сообщение
+          </button>
+        </form>
+      </div>
+
+      <!-- Быстрые контакты + инфо -->
+      <div class="space-y-10">
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Быстрая связь</h2>
+          <div class="space-y-6">
+            <a href="https://t.me/relo2026_bot" target="_blank" class="flex items-center gap-4 p-6 bg-zinc-900 rounded-2xl hover:bg-zinc-800 transition border border-white/10">
+              <i class="fa-brands fa-telegram text-4xl text-cyan-400"></i>
+              <div>
+                <h3 class="text-xl font-semibold">Telegram</h3>
+                <p class="text-zinc-400">@relo2026_bot — отвечаем в течение 1–2 часов</p>
+              </div>
+            </a>
+            <a href="https://wa.me/79991234567" target="_blank" class="flex items-center gap-4 p-6 bg-zinc-900 rounded-2xl hover:bg-zinc-800 transition border border-white/10">
+              <i class="fa-brands fa-whatsapp text-4xl text-emerald-400"></i>
+              <div>
+                <h3 class="text-xl font-semibold">WhatsApp</h3>
+                <p class="text-zinc-400">+7 (999) 123-45-67 — пишите в любое время</p>
+              </div>
+            </a>
+            <a href="mailto:hello@relo2026.com" class="flex items-center gap-4 p-6 bg-zinc-900 rounded-2xl hover:bg-zinc-800 transition border border-white/10">
+              <i class="fa-solid fa-envelope text-4xl text-rose-400"></i>
+              <div>
+                <h3 class="text-xl font-semibold">Email</h3>
+                <p class="text-zinc-400">hello@relo2026.com — для подробных консультаций</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-8 border border-white/10">
+          <h3 class="text-2xl font-bold mb-4">Мы онлайн</h3>
+          <p class="text-zinc-300 mb-6">
+            Обычно отвечаем в течение 1–3 часов в будни и до 12 часов в выходные. Если срочно — пишите в Telegram.
+          </p>
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2b033f?w=800" alt="Команда за работой" class="w-full h-48 object-cover rounded-2xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA-подписка -->
+  <section class="py-24 bg-zinc-900 border-t border-white/10">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6">Подпишитесь на обновления</h3>
+      <p class="text-zinc-400 mb-10">Будьте в курсе свежих изменений по визам, ценам и новым странам</p>
+      <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+        <input type="email" placeholder="Ваш email" class="flex-1 px-6 py-4 bg-zinc-800 border border-white/20 rounded-2xl focus:outline-none focus:border-indigo-500">
+        <button type="submit" class="px-10 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-semibold transition">Подписаться</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // Имитация отправки формы
+    document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const contact = document.getElementById('email').value;
+      const msg = document.getElementById('message').value;
+
+      if (name && contact && msg) {
+        alert(`Спасибо, ${name}! Мы получили ваш вопрос и ответим в ближайшее время.\n\nВаше сообщение:\n${msg}`);
+        e.target.reset();
+      } else {
+        alert('Пожалуйста, заполните все поля');
+      }
+    });
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

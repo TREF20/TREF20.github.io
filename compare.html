@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сравнение стран • Куда переехать в 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); }
+    /* Светлая тема — копируем из предыдущих правок */
+    .light { --bg: #f8fafc; --text: #0f172a; --card-bg: #ffffff; --card-border: rgba(0,0,0,0.08); --muted: #475569; }
+    .light body { background-color: var(--bg); color: var(--text); }
+    .light nav { background: rgba(255,255,255,0.75); border-bottom: 1px solid var(--card-border); }
+    .light .glass { background: rgba(255,255,255,0.75); border: 1px solid var(--card-border); }
+    .light .bg-zinc-950, .light .bg-zinc-900 { background-color: #f8fafc !important; }
+    .light .text-white { color: var(--text) !important; }
+    .light .text-zinc-300, .light .text-zinc-400 { color: var(--muted) !important; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white min-h-screen">
+
+  <!-- Навбар (как на других страницах) -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-plane-departure text-3xl text-indigo-500"></i>
+        <h1 class="text-2xl font-bold">Relo2026</h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-indigo-400 transition">Главная</a>
+        <a href="destinations.html" class="hover:text-indigo-400 transition">Направления</a>
+        <a href="blog.html" class="hover:text-indigo-400 transition">Блог</a>
+        <a href="about.html" class="hover:text-indigo-400 transition">О проекте</a>
+        <a href="contact.html" class="hover:text-indigo-400 transition">Контакты</a>
+        <a href="compare.html" class="text-indigo-400">Сравнение</a>
+      </div>
+      <button data-theme-toggle onclick="toggleTheme()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition dark:bg-zinc-800 dark:hover:bg-zinc-700">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Заголовок -->
+  <section class="pt-32 pb-16 bg-gradient-to-b from-zinc-950 to-zinc-900">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Сравнение стран 2026</h1>
+      <p class="text-xl text-zinc-400 max-w-3xl mx-auto">
+        Выберите до 4 стран и сравните ключевые параметры: стоимость жизни, виза, плюсы/минусы, налоги для удалёнщиков
+      </p>
+    </div>
+  </section>
+
+  <!-- Выбор стран -->
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="glass rounded-3xl p-8 border border-white/10 mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-center">Выберите страны для сравнения</h2>
+        <select id="country-select" multiple class="w-full px-6 py-4 bg-zinc-800 border border-white/20 rounded-2xl focus:outline-none focus:border-indigo-500 h-40">
+          <!-- Заполняется JS -->
+        </select>
+        <button onclick="compareSelected()" class="mt-6 w-full px-10 py-5 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-semibold text-lg transition">
+          Сравнить выбранные
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Таблица сравнения -->
+  <section id="comparison-section" class="py-12 hidden">
+    <div class="max-w-7xl mx-auto px-6 overflow-x-auto">
+      <table id="comparison-table" class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-zinc-800">
+            <th class="p-6 font-bold text-lg">Параметр</th>
+            <!-- Заголовки стран добавляются JS -->
+          </tr>
+        </thead>
+        <tbody id="comparison-body">
+          <!-- Строки добавляются JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    // Данные стран — берём из app.js (должен быть глобальным)
+    // Если countries не глобальный — можно импортировать или вставить здесь копию
+
+    function populateSelect() {
+      const select = document.getElementById('country-select');
+      if (!select || !countries) return;
+
+      select.innerHTML = countries.map(c => `
+        <option value="${c.id}">${c.flag} ${c.name}</option>
+      `).join('');
+    }
+
+    function compareSelected() {
+      const select = document.getElementById('country-select');
+      const selectedIds = Array.from(select.selectedOptions).map(opt => parseInt(opt.value));
+      
+      if (selectedIds.length < 2 || selectedIds.length > 4) {
+        alert('Выберите от 2 до 4 стран');
+        return;
+      }
+
+      const selectedCountries = countries.filter(c => selectedIds.includes(c.id));
+      renderComparison(selectedCountries);
+
+      document.getElementById('comparison-section').classList.remove('hidden');
+      window.scrollTo({ top: document.getElementById('comparison-section').offsetTop - 100, behavior: 'smooth' });
+    }
+
+    function renderComparison(selected) {
+      const thead = document.querySelector('#comparison-table thead tr');
+      const tbody = document.getElementById('comparison-body');
+
+      // Очистка
+      thead.innerHTML = '<th class="p-6 font-bold text-lg">Параметр</th>';
+      tbody.innerHTML = '';
+
+      // Заголовки стран
+      selected.forEach(c => {
+        thead.innerHTML += `
+          <th class="p-6 text-center">
+            <div class="text-4xl mb-2">${c.flag}</div>
+            <div class="text-xl font-bold">${c.name}</div>
+          </th>
+        `;
+      });
+
+      // Строки параметров
+      const params = [
+        { label: 'Стоимость жизни (на 1 чел/мес)', key: 'cost' },
+        { label: 'Виза / пребывание', key: 'visa' },
+        { label: 'Регион', key: 'region' },
+        { label: 'Плюсы (ключевые)', key: 'pros' },
+        { label: 'Минусы (ключевые)', key: 'cons' },
+      ];
+
+      params.forEach(param => {
+        let row = `<tr class="border-t border-white/10"><td class="p-6 font-semibold">${param.label}</td>`;
+        
+        selected.forEach(c => {
+          let value = c[param.key] || '-';
+          if (Array.isArray(value)) {
+            value = value.map(v => `• ${v}`).join('<br>');
+          }
+          row += `<td class="p-6 align-top">${value}</td>`;
+        });
+        
+        row += '</tr>';
+        tbody.innerHTML += row;
+      });
+    }
+
+    // Запуск
+    document.addEventListener('DOMContentLoaded', () => {
+      populateSelect();
+      // ... остальной код initTheme и т.д. из app.js ...
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О проекте • Куда переехать из России в 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); }
+  /* ... твои старые стили остаются ... */
+
+  /* Светлая тема */
+  .light {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card-bg: #ffffff;
+    --card-border: rgba(0,0,0,0.08);
+    --input-bg: #f1f5f9;
+    --input-border: rgba(0,0,0,0.12);
+    --muted: #475569;
+  }
+
+  .light body {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  .light nav {
+    background: rgba(255,255,255,0.75);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .light .glass {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+  }
+
+  .light .bg-zinc-950,
+  .light .bg-zinc-900,
+  .light .bg-zinc-800 {
+    background-color: #f8fafc !important;
+  }
+
+  .light .text-white { color: var(--text) !important; }
+  .light .text-zinc-300,
+  .light .text-zinc-400 { color: var(--muted) !important; }
+
+  .light input,
+  .light textarea,
+  .light select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text);
+  }
+
+  .light input::placeholder { color: #94a3b8; }
+
+  /* Акценты остаются индиго/фиолетовые */
+  .light .text-indigo-400 { color: #6366f1 !important; }
+  .light .bg-indigo-600 { background-color: #4f46e5 !important; }
+  .light .hover\:bg-indigo-700:hover { background-color: #4338ca !important; }
+
+  </style>
+</head>
+<body class="bg-zinc-950 text-white min-h-screen">
+
+  <!-- Навбар -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-plane-departure text-3xl text-indigo-500"></i>
+        <h1 class="text-2xl font-bold">Relo2026</h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-indigo-400 transition">Главная</a>
+        <a href="destinations.html" class="hover:text-indigo-400 transition">Направления</a>
+        <a href="blog.html" class="hover:text-indigo-400 transition">Блог</a>
+        <a href="about.html" class="text-indigo-400">О проекте</a>
+                <a href="compare.html">Сравнение</a>
+        <a href="contact.html" class="hover:text-indigo-400 transition">Контакты</a>
+      </div>
+<button data-theme-toggle onclick="toggleTheme()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition dark:bg-zinc-800 dark:hover:bg-zinc-700">
+  <i class="fa-solid fa-moon"></i>
+</button>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Заголовок -->
+  <section class="pt-32 pb-16 bg-gradient-to-b from-zinc-950 to-zinc-900">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">О проекте Relo2026</h1>
+      <p class="text-xl text-zinc-400 max-w-3xl mx-auto">
+        Независимый гид по релокации для россиян в 2026 году. Актуальные данные, реальные кейсы, без рекламы и агентов.
+      </p>
+    </div>
+  </section>
+
+  <!-- О проекте -->
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-4xl font-bold mb-6">Зачем мы это делаем</h2>
+        <p class="text-zinc-300 leading-relaxed mb-6">
+          В 2026 году переезд из России — это уже не "если", а "куда и как". Сотни тысяч людей уже уехали или планируют. Но информация везде разная: кто-то продаёт дорогие услуги, кто-то пугает, кто-то обещает "всё легко".
+        </p>
+        <p class="text-zinc-300 leading-relaxed mb-6">
+          Мы собрали всё в одном месте: реальные цены на жизнь (февраль 2026), изменения виз, плюсы/минусы, отзывы переехавших. Без партнёрок, без "напиши в личку".
+        </p>
+        <p class="text-zinc-300 leading-relaxed">
+          Проект ведут 3 человека: IT-шник из Тбилиси, бывший москвич из Дубая и аналитик из Еревана. Обновляем данные каждый месяц.
+        </p>
+      </div>
+      <div class="glass rounded-3xl p-8 border border-white/10">
+        <h3 class="text-2xl font-bold mb-6">Что здесь есть прямо сейчас</h3>
+        <ul class="space-y-4 text-zinc-300">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 12+ актуальных стран с ценами 2026</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Фильтры и модалки с деталями</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Блог с новостями виз и кейсами</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> FAQ по самым больным вопросам</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ аккордеон -->
+  <section class="py-20 bg-zinc-900 border-t border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Часто задаваемые вопросы (февраль 2026)</h2>
+      
+      <div class="space-y-4">
+        <!-- Вопрос 1 -->
+        <details class="group bg-zinc-800 rounded-2xl overflow-hidden">
+          <summary class="flex justify-between items-center px-8 py-6 cursor-pointer hover:bg-zinc-700 transition">
+            <h3 class="text-xl font-semibold">Можно ли сейчас без визы уехать в Европу надолго?</h3>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-8 pb-6 text-zinc-300">
+            Почти нет. Шенген для россиян — туристический до 90 дней в 180 (если повезёт с визой). Сербия — 30 дней безвиз. Для долгого пребывания нужны ВНЖ: через бизнес (Сербия), доход (Португалия D7 — но ужесточили), учёбу или работу. Без оснований — очень сложно в 2026.
+          </div>
+        </details>
+
+        <!-- Вопрос 2 -->
+        <details class="group bg-zinc-800 rounded-2xl overflow-hidden">
+          <summary class="flex justify-between items-center px-8 py-6 cursor-pointer hover:bg-zinc-700 transition">
+            <h3 class="text-xl font-semibold">Где проще всего и дешевле всего жить в 2026?</h3>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-8 pb-6 text-zinc-300">
+            Топ-3 по цене/качеству для семьи/удалёнщика: Армения (Ереван ~600–1300 $/мес), Грузия (Тбилиси/Батуми ~700–1400), Казахстан (Алматы ~700–1500). Турция тоже недорого, но цены выросли.
+          </div>
+        </details>
+
+        <!-- Вопрос 3 -->
+        <details class="group bg-zinc-800 rounded-2xl overflow-hidden">
+          <summary class="flex justify-between items-center px-8 py-6 cursor-pointer hover:bg-zinc-700 transition">
+            <h3 class="text-xl font-semibold">Что с налогами, если работаю удалённо на российскую/иностранную компанию?</h3>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-8 pb-6 text-zinc-300">
+            Зависит от страны и твоего статуса. В Армении/Грузии — низкие налоги для ИП (1–5%). В ОАЭ — 0% на личный доход. В Европе (Сербия, Кипр) — часто 10–20%. Важно: если >183 дней в стране — становишься налоговым резидентом там. Консультируйся с налоговым юристом!
+          </div>
+        </details>
+
+        <!-- Вопрос 4 -->
+        <details class="group bg-zinc-800 rounded-2xl overflow-hidden">
+          <summary class="flex justify-between items-center px-8 py-6 cursor-pointer hover:bg-zinc-700 transition">
+            <h3 class="text-xl font-semibold">Куда проще переехать с детьми (школа, садик)?</h3>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-8 pb-6 text-zinc-300">
+            Турция (Анталья/Стамбул — много русских школ), Кипр (Лимассол), Сербия (Белград), ОАЭ (Дубай — международные школы). Армения/Грузия — дешево, но школы слабее. Таиланд (Пхукет/Чиангмай) — популярно у digital nomad семей.
+          </div>
+        </details>
+
+        <!-- Вопрос 5 -->
+        <details class="group bg-zinc-800 rounded-2xl overflow-hidden">
+          <summary class="flex justify-between items-center px-8 py-6 cursor-pointer hover:bg-zinc-700 transition">
+            <h3 class="text-xl font-semibold">Что изменилось в визах в 2026 по сравнению с 2025?</h3>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-8 pb-6 text-zinc-300">
+            Ужесточили: Португалия D7, Испания Non-Lucrative, Таиланд — но ввели/продлили DTV (digital nomad). Сербия — фирма всё ещё работает. ОАЭ — фриланс-виза проще. Грузия — безвиз 365 под вопросом (пока держится).
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-6">Есть вопрос по твоей ситуации?</h3>
+      <p class="text-zinc-400 mb-10">Напиши нам — ответим честно и без воды</p>
+      <a href="contact.html" class="inline-flex items-center gap-3 px-10 py-5 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-semibold text-lg transition">
+        <i class="fa-solid fa-envelope"></i>
+        Перейти в контакты
+      </a>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

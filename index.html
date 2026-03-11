@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Куда переехать из России в 2026 • Relo2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('0.png') center/cover; }
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); }
+    
+    /* Стили для слайдера */
+    .slider-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 1.5rem;
+    }
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 1.5rem;
+    }
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 2.5rem 2rem 1.5rem;
+      color: white;
+      border-radius: 0 0 1.5rem 1.5rem;
+    }
+    .dots {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.5rem;
+    }
+    .arrow:hover { background: rgba(0,0,0,0.8); }
+    .prev { left: 1.5rem; }
+    .next { right: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .slide img { height: 400px; }
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- Навбар (без изменений) -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-plane-departure text-3xl text-indigo-500"></i>
+        <h1 class="text-2xl font-bold">Relo2026</h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="text-indigo-400">Главная</a>
+        <a href="destinations.html">Направления</a>
+        <a href="blog.html">Блог</a>
+        <a href="about.html">О проекте</a>
+        <a href="compare.html">Сравнение</a>
+        <a href="contact.html">Контакты</a>
+      </div>
+      <button data-theme-toggle onclick="toggleTheme()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero (без изменений) -->
+  <section class="hero-bg h-screen flex items-center">
+    <div class="max-w-5xl mx-auto px-6 text-center pt-20">
+      <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-6">Куда переехать<br>из России в <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">2026</span></h2>
+      <p class="text-2xl text-zinc-300 mb-10">12 самых актуальных стран с реальными ценами и визами</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="destinations.html" class="px-10 py-5 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-semibold text-lg">Выбрать страну</a>
+        <a href="compare.html" class="px-10 py-5 border border-white/30 hover:bg-white/10 rounded-2xl font-semibold text-lg">Сравнить страны</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Новый СЛАЙДЕР -->
+  <section class="py-20 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Популярные направления 2026</h2>
+      
+      <div class="slider-container">
+        <div class="slider-wrapper" id="sliderWrapper"></div>
+        
+        <!-- Стрелки -->
+        <div class="arrow prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="arrow next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></div>
+        
+        <!-- Точки -->
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 text-center bg-gradient-to-b from-transparent via-indigo-950/30 to-transparent">
+    <a href="destinations.html" class="inline-block px-16 py-7 bg-white text-zinc-950 font-bold text-2xl rounded-3xl hover:scale-105 transition">Начать поиск своей страны →</a>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    // Слайдер логика (добавляем после app.js)
+    let currentSlide = 0;
+    let slideInterval;
+    const slidesData = countries.slice(0, 6); // топ-6 стран
+
+    function initSlider() {
+      const wrapper = document.getElementById('sliderWrapper');
+      const dotsContainer = document.getElementById('dots');
+      
+      wrapper.innerHTML = slidesData.map((country, index) => `
+        <div class="slide">
+          <img src="${country.image}" alt="${country.name}">
+          <div class="slide-content">
+            <div class="text-6xl mb-4">${country.flag}</div>
+            <h3 class="text-4xl font-bold mb-3">${country.name}</h3>
+            <p class="text-xl mb-4">от $${country.cost} / мес</p>
+            <p class="text-lg opacity-90">${country.desc}</p>
+            <a href="destinations.html" class="mt-6 inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-semibold">Подробнее</a>
+          </div>
+        </div>
+      `).join('');
+
+      // Точки
+      dotsContainer.innerHTML = slidesData.map((_, i) => `
+        <div class="dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></div>
+      `).join('');
+
+      startAutoplay();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      document.getElementById('sliderWrapper').style.transform = `translateX(-${currentSlide * 100}%)`;
+      updateDots();
+      resetAutoplay();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slidesData.length;
+      goToSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slidesData.length) % slidesData.length;
+      goToSlide(currentSlide);
+    }
+
+    function updateDots() {
+      document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function startAutoplay() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(slideInterval);
+      startAutoplay();
+    }
+
+    // Запуск
+    document.addEventListener('DOMContentLoaded', () => {
+      // ... твои существующие init функции ...
+      initSlider();
+    });
+  </script>
+</body>
+</html>
